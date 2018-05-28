@@ -1,0 +1,42 @@
+/* body { font-family:"Microsoft YaHei", SimHei; margin: 0; padding: 0; background-color:#F6F6F6; line-height:24px;
+	font-size:12px; color:#4e4e4e; _background-attachment:fixed;  } */
+/*
+#1BA2DC浅蓝 
+#1E242F深黑   #CFD4DE字体灰
+#2F3645浅黑
+#020215大图周边
+*/	
+	
+	
+*{marign:0px;padding:0px;}
+body {font-family: "Microsoft YaHei", SimHei;font-size: 12px;line-height: 26px;color: #262e34;}
+a:hover {text-decoration: none;}
+
+
+/*header*/
+#header-top {background-color: #1E242F;border-bottom: 1px solid #000;color:#CFD4DE;}
+#header-main {background-color: #2F3645;padding-bottom:5px;}
+#header-main a{color:#fff}
+#header-main a:hover{color:red}
+
+/*footer*/
+/* footer {position: absolute;bottom: 0px;width: 100%;} */
+#footer-top {background-color: #2F3645;padding-top:20px;}
+
+footer li.heading {margin-bottom: 10px;text-transform: uppercase;color: #E7E8E8;cursor: text;font-size:14px;}
+footer li a, #footer li {color: #A1A1A1;}
+footer li a:hover {text-decoration: none;color: #FFF;}
+footer ul {list-style-type: none;}
+#footer-bottom {background-color: #1E242F;border-top: 1px solid #000;}
+#footer-bottom li {float: left;padding: 10px;cursor: auto;color: #747474;}
+
+/*首页内容*/
+article .leftfont {padding-top:110px;height:300px}
+article .rightimg {background: url("../img/select.jpg") no-repeat scroll left  top / auto 260px #fff;position: relative;height: 300px;}
+article .services{background-color:#Fcfcfc;}
+.heading-text {text-align: center;margin-bottom:20px}
+.heading-text h1 {margin-bottom: 10px;color: #262E34;font-size: 36px;font-weight: 600;}
+.heading-text p {font-size:18px;line-height: 32px;}
+.tiles > div {padding: 0px 50px;transition: #000 0.2s ease 0s;text-align:center;}
+.tiles p {font-size: 18px;line-height: 26px;margin-bottom: 30px;}
+

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiangxiaole.www.dao.HouseSignMapper" >
+  <resultMap id="BaseResultMap" type="com.xiangxiaole.www.model.HouseSign" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sign_date" property="signDate" jdbcType="DATE" />
+    <result column="web_sign_num" property="webSignNum" jdbcType="INTEGER" />
+    <result column="web_sign_size" property="webSignSize" jdbcType="REAL" />
+    <result column="house_sign_num" property="houseSignNum" jdbcType="INTEGER" />
+    <result column="house_sign_size" property="houseSignSize" jdbcType="REAL" />
+    <result column="web_check_num" property="webCheckNum" jdbcType="INTEGER" />
+    <result column="web_check_size" property="webCheckSize" jdbcType="REAL" />
+    <result column="house_check_num" property="houseCheckNum" jdbcType="INTEGER" />
+    <result column="house_check_size" property="houseCheckSize" jdbcType="REAL" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sign_date, web_sign_num, web_sign_size, house_sign_num, house_sign_size, web_check_num, 
+    web_check_size, house_check_num, house_check_size, update_time, city
+  </sql>
+  
+  <select id="selectBySignDateAndCity" resultMap="BaseResultMap" parameterType="com.xiangxiaole.www.model.HouseSign" >
+    select 
+    *
+    from house_sign
+    where sign_date = #{signDate,jdbcType=DATE} and city = #{city,jdbcType=VARCHAR}
+  </select>
+  <select id="queryRecentHouseSign" resultMap="BaseResultMap">
+    select 
+    *
+    from house_sign
+    order by sign_date desc
+    limit 0,365
+  </select>
+  
+  
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from house_sign
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from house_sign
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xiangxiaole.www.model.HouseSign" useGeneratedKeys="true" keyProperty="id" >
+    insert into house_sign (sign_date, web_sign_num, web_sign_size, 
+      house_sign_num, house_sign_size, web_check_num, 
+      web_check_size, house_check_num, house_check_size, 
+      update_time, city)
+    values (#{signDate,jdbcType=DATE}, #{webSignNum,jdbcType=INTEGER}, #{webSignSize,jdbcType=REAL}, 
+      #{houseSignNum,jdbcType=INTEGER}, #{houseSignSize,jdbcType=REAL}, #{webCheckNum,jdbcType=INTEGER}, 
+      #{webCheckSize,jdbcType=REAL}, #{houseCheckNum,jdbcType=INTEGER}, #{houseCheckSize,jdbcType=REAL}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{city,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiangxiaole.www.model.HouseSign" useGeneratedKeys="true" keyProperty="id" >
+    insert into house_sign
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      sign_date,
+      web_sign_num,
+      web_sign_size,
+      house_sign_num,
+      house_sign_size,
+      web_check_num,
+      web_check_size,
+      house_check_num,
+      house_check_size,
+      update_time,
+      city,
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{signDate,jdbcType=DATE},
+      #{webSignNum,jdbcType=INTEGER},
+      #{webSignSize,jdbcType=REAL},
+      #{houseSignNum,jdbcType=INTEGER},
+      #{houseSignSize,jdbcType=REAL},
+      #{webCheckNum,jdbcType=INTEGER},
+      #{webCheckSize,jdbcType=REAL},
+      #{houseCheckNum,jdbcType=INTEGER},
+      #{houseCheckSize,jdbcType=REAL},
+      #{updateTime,jdbcType=TIMESTAMP},
+      #{city,jdbcType=VARCHAR},
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiangxiaole.www.model.HouseSign" >
+    update house_sign
+    <set >
+      <if test="signDate != null" >
+        sign_date = #{signDate,jdbcType=DATE},
+      </if>
+      <if test="webSignNum != null" >
+        web_sign_num = #{webSignNum,jdbcType=INTEGER},
+      </if>
+      <if test="webSignSize != null" >
+        web_sign_size = #{webSignSize,jdbcType=REAL},
+      </if>
+      <if test="houseSignNum != null" >
+        house_sign_num = #{houseSignNum,jdbcType=INTEGER},
+      </if>
+      <if test="houseSignSize != null" >
+        house_sign_size = #{houseSignSize,jdbcType=REAL},
+      </if>
+      <if test="webCheckNum != null" >
+        web_check_num = #{webCheckNum,jdbcType=INTEGER},
+      </if>
+      <if test="webCheckSize != null" >
+        web_check_size = #{webCheckSize,jdbcType=REAL},
+      </if>
+      <if test="houseCheckNum != null" >
+        house_check_num = #{houseCheckNum,jdbcType=INTEGER},
+      </if>
+      <if test="houseCheckSize != null" >
+        house_check_size = #{houseCheckSize,jdbcType=REAL},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiangxiaole.www.model.HouseSign" >
+    update house_sign
+    set sign_date = #{signDate,jdbcType=DATE},
+      web_sign_num = #{webSignNum,jdbcType=INTEGER},
+      web_sign_size = #{webSignSize,jdbcType=REAL},
+      house_sign_num = #{houseSignNum,jdbcType=INTEGER},
+      house_sign_size = #{houseSignSize,jdbcType=REAL},
+      web_check_num = #{webCheckNum,jdbcType=INTEGER},
+      web_check_size = #{webCheckSize,jdbcType=REAL},
+      house_check_num = #{houseCheckNum,jdbcType=INTEGER},
+      house_check_size = #{houseCheckSize,jdbcType=REAL},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      city = #{city,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

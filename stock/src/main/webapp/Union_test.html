@@ -1,0 +1,93 @@
+<!--
+    Auto-generated test-site
+-->
+<html>
+<head>
+<title>test page for object fbcontrol</title>
+</head>
+    <script type="text/javascript">
+	var pk="30818902818100E02641507FEC1073FFF1D7A63727E65ADE0D11BF63E32E9581B15867A4A94CB148889C44B4B76D3C7A56ED612EC3EDC8974B86AF5DB32FA4E3FDF1881FDC08EE1EDDB3D4E7FD229ACA7EC59C96CC1B3F58E625A45F0A23AF8B4549C8BBC6CC2401BA2156685444F7D2D5559486AAB66A6D149C2518E306F0D36CCADB112B2B4F0203010001";
+        var data="123456";
+	var retstr="";
+	function getUnionControl()
+  {
+	var control = document.getElementById('UnionControl');
+	if(!control.GetPlainText)
+	{
+		alert("请安装安全控件");
+	}
+    	return control;
+  }
+
+        function addEvent(obj, name, func)
+        {
+            if (window.addEventListener) {
+                obj.addEventListener(name, func, false); 
+            } else {
+                obj.attachEvent("on"+name, func);
+            }
+        }
+        
+        function load()
+        {
+            addEvent(getUnionControl(), 'test', function(){
+                alert("Received a test event from the plugin.")
+            });
+        }
+
+  function GetPlainText()
+  {
+  		var ret = getUnionControl().GetPlainText();
+  		alert("明文[ "+ret+" ]");
+  }
+	function GetRSAStr()
+	{
+			var plainText=getUnionControl().GetPlainText();
+			document.getElementById("Data").innerText = plainText;
+			var version=getUnionControl().UnionGetVersion();
+			document.getElementById("version").innerText = version;
+			
+			var ret = getUnionControl().UnionRSAPKEnc("0","",plainText,pk,retstr);
+			alert("密文(传入公钥):\n[ "+ret+" ]");
+			var ret = getUnionControl().UnionRSAPKEnc("0","",plainText,"",retstr);
+			alert("密文(默认公钥):\n[ "+ret+" ]");
+			document.getElementById("enData").innerText = ret;
+	}
+
+	 function onRetRSAdata(msg)
+        {
+            alert(msg);//返回软件信息 
+        }  
+        
+  
+        
+        function pluginValid()
+        {
+            if(plugin().valid){
+                alert(plugin().echo("控件运行正常!"));
+            } else {
+                alert("请安装插件！");
+            }
+        }
+    </script>
+<body onload="load()">
+<object id="UnionControl" type="application/x-vrent" width="200" height="24">
+    <param name="onload" value="pluginLoaded" />
+    <param name="onRetRSAdata" value="onRetRSAdata" />
+</object>
+
+<br />
+
+<a href="#" onclick="javascript:GetPlainText()">获取输入框明文</a> <br />
+<a href="#" onclick="javascript:GetRSAStr()">获取输入框密文</a> <br />
+<p>
+			明文：<textarea id="Data" rows="4" cols="150" ></textarea>
+</p>
+<p>
+			密文：<textarea id="enData" rows="4" cols="150" ></textarea>
+</p>
+<p>
+			版本：<textarea id="version" rows="4" cols="150" ></textarea>
+</p>
+</body>
+</html>

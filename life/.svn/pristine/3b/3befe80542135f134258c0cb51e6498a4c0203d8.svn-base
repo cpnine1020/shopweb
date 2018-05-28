@@ -1,0 +1,26 @@
+package com.xiangxiaole.www.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.xiangxiaole.www.service.NewsService;
+
+@Controller
+public class NewsController {
+	
+	@Autowired
+	private NewsService newsService;
+	
+	/*
+	 * 天涯热帖榜
+	 */
+	@RequestMapping(value="/news-tianyahot")
+	public ModelAndView index(){
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("newsList",newsService.queryTianyaHot());
+		mv.setViewName("news-tianyahot");
+		return mv;	
+	}
+}

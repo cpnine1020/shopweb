@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiangxiaole.www.dao.NewsMapper" >
+  <resultMap id="BaseResultMap" type="com.xiangxiaole.www.model.News" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="type1" property="type1" jdbcType="VARCHAR" />
+    <result column="type2" property="type2" jdbcType="VARCHAR" />
+    <result column="source_site" property="sourceSite" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="read_num" property="readNum" jdbcType="INTEGER" />
+    <result column="comment_num" property="commentNum" jdbcType="INTEGER" />
+    <result column="last_commment_time" property="lastCommmentTime" jdbcType="TIMESTAMP" />
+    <result column="news_status" property="newsStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xiangxiaole.www.model.News" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, update_time, parent_id, type1, type2, source_site, title, url, author, publish_time, 
+    read_num, comment_num, last_commment_time, news_status
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  
+  <select id="selectByCondition" resultMap="ResultMapWithBLOBs" parameterType="com.xiangxiaole.www.model.News" >
+    select 
+    *
+    from news
+    where 1=1
+    <if test="url != null" >
+     and url = #{url,jdbcType=VARCHAR}
+    </if>
+    <if test="sourceSite != null" >
+     and source_site = #{sourceSite,jdbcType=VARCHAR}
+    </if>
+    order by update_time desc 
+    limit 0,15
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from news
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from news
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xiangxiaole.www.model.News" useGeneratedKeys="true" keyProperty="id" >
+    insert into news (update_time, parent_id, type1, 
+      type2, source_site, title, 
+      url, author, publish_time, 
+      read_num, comment_num, last_commment_time, 
+      news_status, content)
+    values (#{updateTime,jdbcType=TIMESTAMP}, #{parentId,jdbcType=INTEGER}, #{type1,jdbcType=VARCHAR}, 
+      #{type2,jdbcType=VARCHAR}, #{sourceSite,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP}, 
+      #{readNum,jdbcType=INTEGER}, #{commentNum,jdbcType=INTEGER}, #{lastCommmentTime,jdbcType=TIMESTAMP}, 
+      #{newsStatus,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xiangxiaole.www.model.News" useGeneratedKeys="true" keyProperty="id" >
+    insert into news
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      update_time,
+      parent_id,
+      type1,
+      type2,
+      source_site,
+      title,
+      url,
+      author,
+      publish_time,
+      read_num,
+      comment_num,
+      last_commment_time,
+      news_status,
+      content,
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{updateTime,jdbcType=TIMESTAMP},
+      #{parentId,jdbcType=INTEGER},
+      #{type1,jdbcType=VARCHAR},
+      #{type2,jdbcType=VARCHAR},
+      #{sourceSite,jdbcType=VARCHAR},
+      #{title,jdbcType=VARCHAR},
+      #{url,jdbcType=VARCHAR},
+      #{author,jdbcType=VARCHAR},
+      #{publishTime,jdbcType=TIMESTAMP},
+      #{readNum,jdbcType=INTEGER},
+      #{commentNum,jdbcType=INTEGER},
+      #{lastCommmentTime,jdbcType=TIMESTAMP},
+      #{newsStatus,jdbcType=VARCHAR},
+      #{content,jdbcType=LONGVARCHAR},
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xiangxiaole.www.model.News" >
+    update news
+    <set >
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="type1 != null" >
+        type1 = #{type1,jdbcType=VARCHAR},
+      </if>
+      <if test="type2 != null" >
+        type2 = #{type2,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceSite != null" >
+        source_site = #{sourceSite,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readNum != null" >
+        read_num = #{readNum,jdbcType=INTEGER},
+      </if>
+      <if test="commentNum != null" >
+        comment_num = #{commentNum,jdbcType=INTEGER},
+      </if>
+      <if test="lastCommmentTime != null" >
+        last_commment_time = #{lastCommmentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="newsStatus != null" >
+        news_status = #{newsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.xiangxiaole.www.model.News" >
+    update news
+    set update_time = #{updateTime,jdbcType=TIMESTAMP},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      type1 = #{type1,jdbcType=VARCHAR},
+      type2 = #{type2,jdbcType=VARCHAR},
+      source_site = #{sourceSite,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      read_num = #{readNum,jdbcType=INTEGER},
+      comment_num = #{commentNum,jdbcType=INTEGER},
+      last_commment_time = #{lastCommmentTime,jdbcType=TIMESTAMP},
+      news_status = #{newsStatus,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xiangxiaole.www.model.News" >
+    update news
+    set update_time = #{updateTime,jdbcType=TIMESTAMP},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      type1 = #{type1,jdbcType=VARCHAR},
+      type2 = #{type2,jdbcType=VARCHAR},
+      source_site = #{sourceSite,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      read_num = #{readNum,jdbcType=INTEGER},
+      comment_num = #{commentNum,jdbcType=INTEGER},
+      last_commment_time = #{lastCommmentTime,jdbcType=TIMESTAMP},
+      news_status = #{newsStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

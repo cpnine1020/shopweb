@@ -1,0 +1,24 @@
+package com.xiangxiaole.www.dao;
+
+import java.util.List;
+
+import com.xiangxiaole.www.model.News;
+
+public interface NewsMapper {
+	
+	List<News> selectByCondition(News record);//根据条件查询
+	
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(News record);
+
+    int insertSelective(News record);
+
+    News selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(News record);
+
+    int updateByPrimaryKeyWithBLOBs(News record);
+
+    int updateByPrimaryKey(News record);
+}

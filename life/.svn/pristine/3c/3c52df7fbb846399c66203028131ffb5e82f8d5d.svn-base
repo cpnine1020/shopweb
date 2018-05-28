@@ -1,0 +1,57 @@
+/*banner样式*/
+.index_banner{position:relative; width:668px;height:218px;border:1px solid #d8d8d8;}
+.js{POSITION: relative; width: 668px; height:218px;margin:0 auto;}
+.jsNav {POSITION: absolute;125px; BOTTOM: 8px; font:normal 18px/30px "Microsoft Yahei"; HEIGHT: 30px; left:50%; margin-left:-60px; overflow:hidden}
+.jsNav a{LINE-HEIGHT: 28px; WIDTH: 29px; FLOAT: left; VERTICAL-ALIGN: middle;background:url(../pic/index/bannerbtn.png) no-repeat;margin-right:10px;text-align:center;color:#4d4c4e;}
+.jsNav a.imgSelected {COLOR: #fff; background:url(../pic/index/bannerbtn.png) no-repeat -39px 0;}
+
+.index_dt{background:#f4f4f4;margin-top:10px;width:634px;padding:15px 18px;overflow:hidden;}
+.index_dt h1{width:634px;height:23px;background:url(../pic/index/dt_title.jpg) no-repeat;}
+.index_dt_focus{width:580px;margin-top:10px;overflow:hidden;margin-bottom:10px;}
+.index_dt_focus img{float:left;margin-right:20px;}
+.index_dt_focus p{line-height:23px;text-indent:0em;color:#555;}
+.index_dt_focus a{color:#c90b16;}
+.index_dt_focus a:hover{color:#555;}
+.index_dt ul{margin-left:15px;margin-right:15px;}
+.index_dt li{background:url(../pic/global/dot.jpg) no-repeat left;padding-left:13px;line-height:23px;}
+.index_dt li span{float:right;padding-right:40px;}
+.index_ser{width:668px;border:1px solid #d8d8d8;border-bottom:3px solid #d8d8d8;margin-top:10px;overflow:hidden;}
+.index_ser h1{height:38px;background:url(../pic/index/ser_title.jpg) repeat-x;font-size:16px;color:#333;font-weight:normal;line-height:38px;text-indent:17px;}
+.index_ser_nle{width:334px;float:left;background:url(../pic/index/ser_pic1.jpg) no-repeat top;padding-top:105px;padding-bottom:20px;}
+.index_ser_nle ul{margin-left:35px;margin-right:35px;}
+.index_ser_nle li{float:left;width:115px;background:url(../pic/index/arrow_dot.jpg) no-repeat left;padding-left:16px;font-size:14px;line-height:25px;background-position:0px 8px;}
+.index_ser_nle li a{coor:#333;}
+.index_ser_nle li a:hover{color:#c90b16;}
+.index_ser_nri{width:333px;border-left:1px solid #d8d8d8;background:url(../pic/index/ser_pic2.jpg) no-repeat top;}
+.index_client{width:670px;margin-top:10px;position:relative;height:166px;}
+.index_client h1{background:url(../pic/index/ourclient_bg.jpg) no-repeat bottom;padding-bottom:14px;padding-top:9px;font-size:16px;color:#333;font-weight:normal;text-indent:17px;}
+
+#paintDiv{width:640px;position:absolute;height:166px;overflow:hidden;left:18px;}
+#next{position:absolute;top:93px;left:658px;width:12px;}
+#previous{position:absolute;top:93px;left:0px;width:12px;}
+.index_client_m{width:640px;padding-top:5px;padding-bottom:5px;position:absolute;display:block;}
+.index_client_m img{width:153px;margin-right:7px;margin-top:7px;float:left;}
+
+.index_publish{width:276px;border:1px solid #d8d8d8;border-bottom:3px solid #d8d8d8;border-top:2px solid #c30303;overflow:hidden;}
+.index_publish h1{height:32px;line-height:32px;background:url(../pic/index/publish_title.jpg) repeat-x;color:#333;font-size:16px;text-indent:10px;font-weight:normal;}
+.index_publish_list{margin:10px 18px;width:240px;}
+.index_publish_list li{background:url(../pic/global/dot.jpg) no-repeat left;padding-left:13px;line-height:24px;}
+.index_publish_list li.more{background:none;text-align:right;margin-top:10px;}
+.index_p_tab{width:240px;margin-top:10px;overflow:hidden;}
+.index_p_tab li{width:120px;background:url(../pic/index/tab_bg.jpg) repeat-x bottom;padding-bottom:12px;text-align:center;font-size:14px;color:#333;cursor:pointer;float:left;}
+.index_p_tab li.tabon{background:url(../pic/index/tab_bg_s.jpg) no-repeat center bottom;color:#c30303;}
+.index_ad{width:278px;margin-top:10px;}
+.index_ad img{margin-bottom:10px;}
+.value{margin:10px 18px;width:240px;}
+.value_table{width:240px;}
+.value_table th{background:#eff5fb;height:32px;text-align:center;color:#458bc9;border-right:1px solid #fff;font-weight:normal;}
+.value_table td{height:23px;border-bottom:1px dotted #ccc;text-align:center;}
+
+
+.state{ width:50px; height:16px; float:right; margin-right:10px; line-height:16px; padding-left:22px;}
+.state a:link,.state a:visited{color:#333; text-decoration:underline;}
+.state a:hover{color:#c00; text-decoration:underline;}
+.newsshowMain h3{ clear:both; margin:8px 0; font-size:16px; line-height:26px; font-weight:bold; text-align:center; color:#c30303;}
+.source{ height:24px; line-height:24px; background:#f4f4f4; text-align:center;}
+.source span{ margin:0 20px; color:#a4a4a4;}
+.source span strong{ color:#555; font-weight:normal;}

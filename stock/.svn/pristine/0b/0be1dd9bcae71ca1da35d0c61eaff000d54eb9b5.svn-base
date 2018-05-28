@@ -1,0 +1,20 @@
+#error/warn/info/debug#
+log4j.rootLogger=warn, stdout
+log4j.logger.hqimport=info,hq
+#to console#
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=[%p] %d{yyyy-MM-dd HH:mm:ss} %m%n
+#to file#
+log4j.appender.file=org.apache.log4j.FileAppender
+log4j.appender.file.File=stock.log
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=[%p] %d{yyyy-MM-dd HH:mm:ss} %m%n
+
+#hq import log
+log4j.appender.hq=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.hq.File=/usr/ningx/log/hqimport/hqimport.log
+log4j.appender.hq.DatePattern = '.'yyyy-MM-dd
+log4j.appender.hq.layout=org.apache.log4j.PatternLayout
+log4j.appender.hq.layout.ConversionPattern=[%p] %d{yyyy-MM-dd HH:mm:ss} %m%n 
