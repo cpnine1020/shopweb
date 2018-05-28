@@ -34,8 +34,9 @@ public class NewsService {
 	 * 爬虫解析天涯热帖
 	 */
 	public boolean parseTianyaHot() throws IOException{
-		Document doc = Jsoup.connect("http://bbs.tianya.cn").timeout(0).get();
-		Elements els = doc.select("div[_tystat=热帖榜]>ul.curr>li[class!=li-line]");
+		//Document doc = Jsoup.connect("http://bbs.tianya.cn").timeout(0).get();
+		Document doc = Jsoup.connect("http://bbs.tianya.cn/hotArticle.jsp").userAgent("Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)").get();
+		Elements els = doc.select("#main > div.mt5 > table > tbody:nth-child(4) > tr");
 		for(int i=els.size()-1;i>=0;i--){
 			Element el = els.get(i);
 			News news = new News();

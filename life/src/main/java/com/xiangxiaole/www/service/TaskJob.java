@@ -16,7 +16,7 @@ public class TaskJob {
 	/*
 	 * 北京存量房签约统计
 	 */
-	@Scheduled(cron = "0 0 6-7 * * *")
+	@Scheduled(cron = "0 15 17 * * *")
 	public void queryHouseSign() throws IOException{
 		MyLog.taskLogger.info("北京存量房签约统计开始");
 		mfmcService.parseHouseSign();
@@ -26,7 +26,7 @@ public class TaskJob {
 	/*
 	 * 天涯热帖
 	 */
-	@Scheduled(cron = "0 10 0/2 * * *")
+	@Scheduled(cron = "0 46 18 * * *")
 	public void queryTianyaHot() throws IOException{
 		MyLog.taskLogger.info("天涯热帖爬取开始");
 		newsService.parseTianyaHot();
